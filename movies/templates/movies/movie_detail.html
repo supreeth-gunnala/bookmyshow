@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="display:flex; gap:40px; flex-wrap:wrap;">
+
+    {% if movie.poster %}
+        <img src="{{ movie.poster.url }}"
+             style="width:300px; border-radius:10px;">
+    {% endif %}
+
+    <div>
+        <h1>{{ movie.title }}</h1>
+
+        <p style="max-width:500px;">
+            {{ movie.description }}
+        </p>
+
+        <p><b>Price:</b> ₹{{ movie.price }}</p>
+
+        <a href="{% url 'movies:book_tickets' movie.id %}">
+            🎟 Book Tickets
+        </a>
+
+        <br><br>
+        <a href="{% url 'movies:home' %}">⬅ Back</a>
+    </div>
+
+</div>
+
+{% endblock %}

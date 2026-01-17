@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+<div class="auth-box">
+    <h2>Login</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.username }}
+        {{ form.password }}
+        <button type="submit">Login</button>
+    </form>
+
+    <p>
+        New user?
+        <a href="{% url 'signup' %}">Create account</a>
+    </p>
+</div>
+
+</body>
+</html>

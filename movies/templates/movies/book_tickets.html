@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>🎟 Select Seats — {{ movie.title }}</h2>
+<p>Price per seat: ₹{{ seat_price }}</p>
+
+<div style="
+    margin:25px 0;
+    padding:12px;
+    background:#ccc;
+    color:#000;
+    font-weight:bold;
+    text-align:center;
+    border-radius:8px;">
+    SCREEN
+</div>
+
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="seats" id="seatsInput">
+
+{% for row in seat_layout %}
+    <div style="margin-bottom:12px;">
+    {% for seat in row %}
+        {% if seat.occupied %}
+            <button type="button" disabled>
+                {{ seat.name }}
+            </button>
+        {% else %}
+            <button type="button"
+                    id="{{ seat.name }}"
+                    onclick="selectSeat('{{ seat.name }}')"
+                    style="background:#2ecc71;">
+                {{ seat.name }}
+            </button>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endfor %}
+
+<br>
+<button type="submit">Confirm Booking</button>
+</form>
+
+<script>
+let selected = [];
+
+function selectSeat(seat) {
+    const btn = document.getElementById(seat);
+
+    if (selected.includes(seat)) {
+        selected = selected.filter(s => s !== seat);
+        btn.style.background = "#2ecc71";
+        btn.style.transform = "scale(1)";
+    } else {
+        selected.push(seat);
+        btn.style.background = "#f1c40f";
+        btn.style.transform = "scale(1.15)";
+    }
+
+    document.getElementById("seatsInput").value = selected.join(",");
+}
+</script>
+{% endblock %}

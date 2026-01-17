@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+}
+
+header {
+    background: #e50914;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+}
+
+.container {
+    padding: 30px;
+}
+
+/* Movie cards */
+.movie-card {
+    background: #1c1c1c;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.02);
+}
+
+.movie-card a {
+    color: #e50914;
+    font-weight: bold;
+}
+
+/* Seats */
+.seat {
+    width: 45px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.seat.available {
+    background: #2ecc71;
+}
+
+.seat.selected {
+    background: #f1c40f;
+}
+
+.seat.booked {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.seat:hover:not(.booked) {
+    opacity: 0.8;
+}
+
+.screen {
+    margin: 20px 0;
+    padding: 10px;
+    background: #aaa;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+}

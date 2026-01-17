@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>✅ Booking Successful</h2>
+
+<p><b>Movie:</b> {{ booking.movie.title }}</p>
+<p><b>Seats:</b> {{ booking.seats|join:", " }}</p>
+<p><b>Total:</b> ₹{{ booking.total_price }}</p>
+
+<a href="{% url 'movies:home' %}">⬅ Home</a>
+
+{% endblock %}
